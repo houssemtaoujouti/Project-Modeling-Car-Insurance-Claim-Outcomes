@@ -6,12 +6,8 @@ from sklearn.pipeline import Pipeline
 from sklearn.model_selection import GridSearchCV
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import cross_val_score, KFold
-
-# Load data
 df = pd.read_csv("car_insurance.csv")
 df = df.drop(columns=["id","gender", "education", "income", "married", "children", "postal_code"])
-
-# Select only numeric columns for modeling
 df['driving_experience'] = df['driving_experience'].replace({
     '0-9y': 0,
     '10-19y': 1,
@@ -54,4 +50,5 @@ for i in col:
 best_feature_df = pd.DataFrame({
     'best_feature': [bestf],
     'best_accuracy': [besta] })
+
 print(best_feature_df)
